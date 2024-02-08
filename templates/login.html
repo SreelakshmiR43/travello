@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Login Form</title>
+    <style>
+      body {
+        background-color:black;
+        margin: 0;
+        font-family: Arial, sans-serif;
+      }
+
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        height: 100vh;
+      }
+
+      .form-container {
+        border: 1px solid #333;
+        padding: 30px;
+        border-radius: 10px;
+        width: 500px;
+        margin: 20px auto;
+        background-color: white;
+        color: #333;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      }
+
+      form {
+        text-align: center;
+      }
+
+      .title {
+        width: 100%;
+        background-color: #333;
+        padding: 10px;
+        text-align: center;
+        color: white;
+        font-size: 24px;
+        margin: 0;
+      }
+
+      .label {
+        display: block;
+        font-size: 15px;
+        margin-bottom: 5px;
+        text-align: left;
+        color: #333;
+      }
+
+      .input {
+        display: block;
+        width: 100%;
+        height: 30px;
+        border: 1px solid #999;
+        border-radius: 5px;
+        font-size: 15px;
+        padding: 5px;
+        margin-bottom: 10px;
+      }
+
+      button {
+        width: 100%;
+        height: 40px;
+        font-size: 18px;
+        background-color: #007BFF;
+        border: none;
+        color: white;
+        margin: 20px 0;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      button:hover {
+        background-color: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="form-container">
+       <form method="post" action="">   <!--  crsrf_token -bcoz method is post-->
+          {% csrf_token %}
+          <h1>Login</h1>
+          <label class="label" >Username</label>
+          <input class="input" type="text" id="name" name="username" placeholder="Enter your Username">
+          <label class="label" >Password</label>
+          <input class="input" type="password" id="pwd" name="pwd" placeholder="Enter password">
+          <button class="button">Login</button>
+        </form>
+        {% for msg in messages %}
+          {{msg}}
+        {% endfor %}
+      </div>
+    </div>
+  </body>
+</html>
